@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 5 - Simple Math</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+            <form id="calculate">
+                <p>First number:<br/><input type="text"></p>
+                <p>Second number:<br/><input type="text"></p>
+            </form>
+            <button onclick="calculate()">Calculate</button>
+            <p id="output"></p>
+            <script>
+                function calculate() {
+                    let operand1 = Number(document.getElementById("calculate")[0].value),
+                        operand2 = Number(document.getElementById("calculate")[1].value),
+                        output = "",
+                        sum = operand1 + operand2,
+                        difference = operand1 - operand2,
+                        product = operand1 * operand2,
+                        quotient = operand1 / operand2;
+                        output +=  `${operand1} + ${operand2} = ${sum}<br/>
+                                    ${operand1} - ${operand2} = ${difference}<br/>
+                                    ${operand1} x ${operand2} = ${product}<br/>
+                                    ${operand1} / ${operand2} = ${quotient}`;
+                    document.getElementById("output").innerHTML = output;
+                }
+            </script>
+		</body>
+	</html>

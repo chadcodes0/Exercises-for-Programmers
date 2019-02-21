@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 4 - Mad Libs</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+            <form id="words">
+                <p>Noun:<br/><input type="text"></p>
+                <p>Verb:<br/><input type="text"></p>
+                <p>Adjective:<br/><input type="text"></p>
+                <p>Adverb:<br/><input type="text"></p>
+            </form>
+                <button onclick="to_mad_lib()">Mad Lib</button>
+            <p id="output">Do you _VERB_ your _ADJECTIVE_ _NOUN_ _ADVERB_? That's crazy!</p>
+            <script>
+                function to_mad_lib() {
+                    let noun = document.getElementById("words")[0].value,
+                        verb = document.getElementById("words")[1].value,
+                        adjective = document.getElementById("words")[2].value,
+                        adverb = document.getElementById("words")[3].value;
+                    document.getElementById("output").innerHTML = `Do you ${verb} your ${adjective} ${noun} ${adverb}? That's Crazy!`;
+                }
+            </script>
+		</body>
+	</html>
