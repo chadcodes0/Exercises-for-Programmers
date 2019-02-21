@@ -19,18 +19,18 @@
             <p id="output"></p>
             <script>
                 function output_quote() {
-					let quotation = document.getElementById("input_quote")[0].value,
-						attribution = document.getElementById("input_quote")[1].value;
-						document.getElementById("output").innerHTML = `\"${quotation}\" <br/> \- <em>${attribution}</em>`;
+			let quotation = document.getElementById("input_quote")[0].value,
+			    attribution = document.getElementById("input_quote")[1].value;
+			document.getElementById("output").innerHTML = `\"${quotation}\" <br/> \- <em>${attribution}</em>`;
+			}
+			let input = document.getElementById("input_quote");
+			input.addEventListener("keydown", 
+				function(event) {
+					if(event.keyCode === 13) {
+						event.preventDefault();
+						output_quote();
 					}
-				let input = document.getElementById("input_quote");
-					input.addEventListener("keydown", 
-						function(event) {
-							if(event.keyCode === 13) {
-								event.preventDefault();
-								output_quote();
-							}
-					});
+			});
             </script>
 		</body>
 	</html>
