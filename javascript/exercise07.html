@@ -11,5 +11,20 @@
 			</style>
 		</head>
 		<body>
+			<form id="dimensions">
+				<p>Room length:<input type="text"></p>
+				<p>Room width:<input type="text"></p>
+			</form>
+			<button id="calculate" onclick="get_area()">Get Area</button>
+			<p id="output"></p>
+			<script>
+				function get_area() {
+				let l = Number(document.getElementById("dimensions")[0].value),
+					w = Number(document.getElementById("dimensions")[1].value),
+					area = l * w,
+					metric = Math.round(area * 92.90304) / 1000;
+					document.getElementById("output").innerHTML = `The area is ${area} square feet or ${metric} square meters.`;
+				}
+			</script>
 		</body>
 	</html>
