@@ -4,12 +4,17 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Exercise 1 - Hello World(JavaScript)</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
 		</head>
 		<body>
 			<form id="user_name">
 				<p>What's your name? <input type="text"></p>
 			</form>
-            <button id="name_button" onclick="say_hi()" autofocus="autofocus">Submit name.</button>
+            <button id="name_button" onclick="say_hi()" autofocus="autofocus">Submit name</button>
 			<h1 id="output"></h1>
 			<script>
                 let input = document.getElementById("user_name");
