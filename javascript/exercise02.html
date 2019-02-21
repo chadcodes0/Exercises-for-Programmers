@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 2 - Counting the Number of Characters</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+            <form id="input_str">
+                <p>Enter a string:<input type="text" maxlength="50"></p>
+            </form>
+            <button onclick="count_string()">Count Characters</button>
+            <p id="output"></p>
+            <script>
+                function count_string() {
+                    let input = document.getElementById("input_str");
+                        input.addEventListener("keydown", 
+                    function(event) {
+                        if(event.keyCode === 13) {
+                            event.preventDefault();
+                            count_string();
+                            }
+                        });
+                    if(document.getElementById("input_str")[0].value) {
+                        let input_str = document.getElementById("input_str")[0].value,
+                            counted = input_str.length;
+                        document.getElementById("output").innerHTML = `Your string is ${counted} characters long.`;
+                    } else {
+                        document.getElementById("output").innerHTML = "Please enter a string.";
+                    }
+                }
+            </script>
+		</body>
+	</html>
