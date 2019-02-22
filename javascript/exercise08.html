@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 8 - Pizza Party</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+            <form id="pizzas">
+                <p>How many people are attending? <input type="text" size="2" maxlength="3"></p>
+                <p>How many pizzas? <input type="text" size="2" maxlength="3"></p>
+                <p>How many slice per pizza? <input type="text" size="2" maxlength="2"></p>
+            </form>
+            <button onclick="slices_it()">Za!</button>
+            <p id="output"></p>
+
+            <script>
+                function slices_it() {
+                    let peeps = Number(document.getElementById("pizzas")[0].value),
+                        pizzas = Number(document.getElementById("pizzas")[1].value),
+                        slices_per_pizza = Number(document.getElementById("pizzas")[2].value),
+                        slices_per_person = Math.floor((pizzas * slices_per_pizza) / peeps),
+                        remainder = (pizzas * slices_per_pizza) % peeps;
+                    if(peeps && pizzas && slices_per_person) {
+                        let plural = "",
+                            remainder_plural = "";
+                        slices_per_person > 1 ? plural = "slices" : plural = "slice";
+                        remainder > 1 || remainder === 0 ? remainder_plural = "slices" : remainder_plural = "slice";
+                        document.getElementById("output").innerHTML = `With ${peeps} people, each person will get 
+                        ${slices_per_person} ${plural} with ${remainder} ${remainder_plural} leftover.`;
+                    } else {
+                        document.getElementById("output").innerHTML = "Please use valid entries.";
+                    }
+                }
+            </script>
+		</body>
+	</html>

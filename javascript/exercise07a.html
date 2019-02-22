@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 7 Revised per Challenge - Area of Room</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+            <form id="dimensions">
+                <label>Choose measurement system</label><br/>
+                <select name="system">
+                    <option>Metric</option>
+                    <option>Imperial</option>
+                </select>
+                <p>Length <input type="text"></p>
+                <p>Width <input type="text"></p>
+            </form>
+            <button onclick="calculate()">Get Area</button>
+            <p id="output"></p>
+            <script>
+                function calculate() {
+                    let system = document.getElementById("dimensions")[0].value,
+                        output = document.getElementById("output"),
+                        l = Number(document.getElementById("dimensions")[1].value),
+                        w = Number(document.getElementById("dimensions")[2].value);
+                    if(l && w) {
+                        let area = l * w;
+                        system === "Metric" ? output.innerHTML = `${area} square meters` : output.innerHTML = `${area} square feet`;
+                    } else {
+                        output.innerHTML = "Please enter valid dimensions.";
+                    }
+                }
+            </script>
+		</body>
+	</html>
