@@ -11,5 +11,64 @@
 			</style>
 		</head>
 		<body>
+			<form id="wall_dimensions">
+				<select id="selection">
+					<option>Select Shape</option>
+					<option>Rectangular</option>
+					<option>Circular</option>
+				</select>
+			</form>
+			<div id="button_space"></div>
+			<div id="results"></div>
+			<script>
+				let dimension_field1 = document.createElement("input");
+				let dimension_field2 = document.createElement("input");
+				let para1 = document.createElement("p");
+				let para2 = document.createElement("p");
+				let this_form = document.getElementById("wall_dimensions");
+				let results = document.getElementById("results");
+						let mybutton = document.createElement("button");
+							mybutton.setAttribute("onclick", "calculate()");
+							mybutton.innerText = "Calculate";
+						let button_space = document.getElementById("button_space")
+						let selection = document.getElementById("selection");
+					
+				this_form[0].addEventListener("mouseup",
+					function choose_shape() {
+						dimension_field1.type = "text";
+						dimension_field1.length = "4";
+						dimension_field1.maxlength = "4";
+						dimension_field2.type = "text";
+						dimension_field2.length = "4";
+						dimension_field2.maxlength = "4";
+						let shape = document.getElementById("wall_dimensions")[0].value;
+						this_form.removeChild(this_form.lastChild);
+						if(shape === "Circular") {
+							this_form.appendChild(para1);
+							para1.innerText = "Radius  ";
+							para1.appendChild(dimension_field1);
+							this_form.removeChild(selection);
+						} else if(shape === "Rectangular") {
+							this_form.appendChild(para1);
+							para1.innerText = "Length  ";
+							para1.appendChild(dimension_field1);
+							this_form.appendChild(para2);
+							para2.innerText = "Width  ";
+							para2.appendChild(dimension_field2);
+							this_form.removeChild(selection);
+						}
+						button_space.appendChild(mybutton);
+					});
+				function calculate() {
+					if(document.getElementsByTagName("input").length > 1) {
+					let first = Number(document.querySelectorAll("input")[0].value),
+						second = Number(document.querySelectorAll("input")[1].value);
+						results.innerHTML = Math.ceil((first * second) / 350);
+					} else {
+						let radius = Number(document.getElementsByTagName("input")[0].value);
+						results.innerHTML = Math.ceil((Math.PI * (radius * radius)) / 350);
+					}
+				}
+			</script>
         </body>
 	</html>
