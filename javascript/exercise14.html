@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 14 - WI Sales Tax Calculator</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+			<form id="sales_tax">
+				<p>What is the order subtotal?  <input type="text"></p>
+				<p>What state are you in? <input type="text" maxlength="2"></p>
+			</form>
+            <button id="calc_tax">Get subtotal</button>
+            <p id="output"></p>
+            <script>
+                let my_button = document.getElementById("calc_tax");
+                my_button.addEventListener("click", calculate);
+                function calculate() {
+                    let pattern = /^[a-zA-Z]{2}$/;
+                    let subtotal = Number(document.getElementById("sales_tax")[0].value),
+                        state = document.getElementById("sales_tax")[1].value,
+                        output = document.getElementById("output");
+                    if(subtotal && typeof state === "string" && pattern.test(state)) {
+                        let total = Math.ceil((subtotal + (subtotal * .055)) * 100) / 100;
+                        state = state.toUpperCase();
+                        state === "WI" ? output.innerHTML = total.toFixed(2) : output.innerHTML = subtotal;
+                    } else {
+                        output.innerHTML = "Please use valid input types.";
+                    }
+                }
+            </script>
+		</body>
+	</html>

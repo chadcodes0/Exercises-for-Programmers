@@ -9,19 +9,6 @@
 					font-family: Arial, Helvetica, sans-serif;
 				}
 			</style>
-		</head>
-		<body>
-            <form id="dimensions">
-                <label>Choose measurement system</label><br/>
-                <select name="system">
-                    <option>Metric</option>
-                    <option>Imperial</option>
-                </select>
-                <p>Length <input type="text"></p>
-                <p>Width <input type="text"></p>
-            </form>
-            <button onclick="calculate()">Get Area</button>
-            <p id="output"></p>
             <script>
                 function calculate() {
                     let system = document.getElementById("dimensions")[0].value,
@@ -36,5 +23,18 @@
                     }
                 }
             </script>
+		</head>
+		<body>
+            <form id="dimensions">
+                <label>Choose measurement system</label><br/>
+                <select name="system">
+                    <option>Metric</option>
+                    <option>Imperial</option>
+                </select>
+                <p>Length <input type="text"></p>
+                <p>Width <input type="text"></p>
+            </form>
+            <button onclick="calculate()">Get Area</button>
+            <p id="output"></p>
 		</body>
 	</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 15 - Basic Form Validation</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+			<form id="login">
+				<p>Username: <input type="text" length="20" maxlength="40"></p>
+				<p>Password: <input type="password" length="20" maxlength="60"></p>
+			</form>
+			<button id="mybutton">Check</button>
+			<p id="output"></p>
+			<script>
+				var users = {
+					"dr_phil": "dRpHiLrRoCks666",
+					"davidflanagan": "javascript1234",
+					"brodyismefriend": "RIPbrody",
+					"drsteveboole": "broolesrules"
+				}
+				var myform = document.getElementById("login");
+				let the_button = document.getElementById("mybutton");
+					the_button.addEventListener("click", function () {
+						if(myform[0].value && myform[1].value) {
+							let password = myform[1].value;
+							if(users[myform[0].value]) {
+								users[myform[0].value] === password ? 
+								document.getElementById("output").innerHTML = "Username and password verified." : 
+								document.getElementById("output").innerHTML = "Password does not match our records.";
+							} else {
+								document.getElementById("output").innerHTML = "Username not found.";
+							}
+						} else {
+							document.getElementById("output").innerHTML = "Please enter username and password.";
+						}
+					});
+			</script>
+		</body>
+	</html>
