@@ -5,15 +5,26 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>Exercise 32 - Guess the Number Game</title>
 			<style>
-				body {
-					font-family: Arial, Helvetica, sans-serif;
-				}
+				body { 
+                    font-family: Arial, Helvetica, sans-serif; 
+                    background-color:rgb(176, 235, 235);
+                    color: rgb(20, 48, 14);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                h1 { font-size: 4vw; }
+                form, button, div, input { font-size: 2vw; }
+                #output { 
+                    font-size: 3vw;
+                    color: rgb(34, 7, 156);
+                }
 			</style>
 		</head>
 		<body>
-            <h1>Are you psychic?</h1>
+            <h1>Guess the number</h1>
             <form name="myform" onsubmit="return false">
-                <label>Your guess: <input id="guess" type="text" maxlength="3"></label>
+                <label>Your guess: <input id="guess" type="text" size="4" maxlength="3" autocomplete="off"></label>
             </form>
             <button id="mybutton">Guess</button>
             <div>Guess count: <span id="counter">0</span></div>
@@ -34,19 +45,19 @@
                 function guess() {
                     let userGuess = Number(document.getElementById("guess").value);
                     if(!userGuess) {
-                        output.innerHTML = "Please enter a number!";
+                        output.innerHTML = "Hey Kreskin, that's not a number.";
                     } else {
                         if(userGuess === theNumber) {
                             output.innerHTML = "Good guess!";
                         } else {
-                            output.innerHTML = "Try again!";
+                            userGuess > theNumber ? output.innerHTML = "Too high" : output.innerHTML = "Too low";
                         }
                     }
                     count++;
                     counter.innerHTML = count;
                 }
-                    buttonIn.addEventListener("click", guess);
-                    document.myform.addEventListener('submit', guess);
+                buttonIn.addEventListener("click", guess);
+                document.myform.addEventListener('submit', guess);
             </script>
         </body>
 	</html>
