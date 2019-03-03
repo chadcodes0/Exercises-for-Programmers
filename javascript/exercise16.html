@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise 16 - Legal Driving Age</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Are you old enough to drive?</h1>
+    <form name="userinfo">
+        <label>Your age: <input type="text" maxlength="2" size="3" ></label>
+        <label>Your state: <input type="text" maxlength="2" size="3"></label>
+    </form>
+    <button id="mybutton">Check</button>
+    <h3 id="output"></h3>
+    <script>
+        const drivingAges = {
+            AL: 17,AK: 17,AZ: 16.5,AR: 16.5,CA: 17,CO: 17,CT: 18,DE: 17,FL: 18,GA: 18,
+            HI: 17,ID: 16,IL: 18,IN: 18,IA: 17,KS: 16,KY: 17,LA: 17,ME: 16,MD: 18,MS: 18,
+            MI: 17,MN: 16.5,MT: 16,NE: 17,NV: 18,NH: 17,NJ: 18,NM: 16.5,NY: 17,NC: 16.5,
+            ND: 16,OH: 18,OK: 16.5,OR: 17,PA: 17,RI: 17.5,SC: 16.5,SD: 16,TN: 17,TX: 18,
+            UT: 17,VT: 16.5,VA: 18,WA: 17,WV: 17,WI: 17,WY: 16.5
+        }
+        const mybutton = document.getElementById("mybutton");
+        let output = document.getElementById("output");
+        function checkAge() {
+            let age = Number(document.userinfo[0].value);
+            let state = document.userinfo[1].value.toUpperCase();
+            if(age && typeof state === "string") {
+                if(!drivingAges[state]) {
+                    output.innerHTML = "Please enter valid state.";
+                } else {
+                    age >= drivingAges[state] ? output.innerHTML = "You are legally allowed to drive." :
+                                                output.innerHTML = "You are not legally allowed to drive.";
+                }
+            } else {
+                output.innerHTML = "Please enter valid entries.";
+            }
+        }
+        mybutton.addEventListener('click', checkAge);
+
+    </script>
+</body>
+
+</html>

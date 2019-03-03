@@ -36,12 +36,10 @@
                     output = document.getElementById('output'),
                     theNumber,
                     count = 0;
-
                 function randomNumber() {
                     theNumber = Math.ceil(Math.random() * 10);
                 }
                 window.addEventListener("load", randomNumber);
-
                 function guess() {
                     let userGuess = Number(document.getElementById("guess").value);
                     if(!userGuess) {
