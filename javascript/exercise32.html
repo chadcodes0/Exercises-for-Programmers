@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Exercise 32 - Guess the Number Game</title>
+			<style>
+				body {
+					font-family: Arial, Helvetica, sans-serif;
+				}
+			</style>
+		</head>
+		<body>
+            <h1>Are you psychic?</h1>
+            <form name="myform" onsubmit="return false">
+                <label>Your guess: <input id="guess" type="text" maxlength="3"></label>
+            </form>
+            <button id="mybutton">Guess</button>
+            <div>Guess count: <span id="counter">0</span></div>
+            <div id="output"></div>
+
+            <script>
+                const buttonIn = document.getElementById("mybutton");
+                let counter = document.getElementById('counter'),
+                    output = document.getElementById('output'),
+                    theNumber,
+                    count = 0;
+
+                function randomNumber() {
+                    theNumber = Math.ceil(Math.random() * 10);
+                }
+                window.addEventListener("load", randomNumber);
+
+                function guess() {
+                    let userGuess = Number(document.getElementById("guess").value);
+                    if(!userGuess) {
+                        output.innerHTML = "Please enter a number!";
+                    } else {
+                        if(userGuess === theNumber) {
+                            output.innerHTML = "Good guess!";
+                        } else {
+                            output.innerHTML = "Try again!";
+                        }
+                    }
+                    count++;
+                    counter.innerHTML = count;
+                }
+                    buttonIn.addEventListener("click", guess);
+                    document.myform.addEventListener('submit', guess);
+            </script>
+        </body>
+	</html>
